@@ -4,7 +4,7 @@
 
 [Open the listening room](https://seoshiro.github.io/stillform/) · [Source on GitHub](https://github.com/seoshiro/stillform)
 
-A warm editorial interface, an original animated toroidal sculpture, and a genuinely functional sound studio. All visuals and sounds are generated locally. No paid resources, remote fonts, streamed media, accounts, trackers, or API keys.
+A dark cinematic sound gallery with large serif typography, a dimensional row of original atmosphere covers, a live sculpture, and a functional sound studio. No paid resources, remotely loaded fonts, streamed media, accounts, trackers, or API keys.
 
 ## Run locally
 
@@ -69,6 +69,6 @@ Run the development server first. Optional `TEST_URL` defaults to `http://127.0.
 
 ## Design and assets
 
-All sculpture geometry, icons, marks, noise texture, interface copy, and sound synthesis were authored for this project. Typography uses local Arial/Helvetica, Georgia, and Courier New fallbacks, without redistributing font files. There are no third-party visual/audio assets or runtime dependencies. `assets/social.svg` is an editable social-card source; some social networks require a future PNG export and absolute URL once a public domain exists.
+All cover art, sculpture geometry, icons, marks, interface copy, and sound synthesis were authored for this project. The title typeface is a self-hosted Latin WOFF2 of **Bodoni Moda**, sourced from Google Fonts and distributed under the SIL Open Font License; see `assets/OFL-Bodoni-Moda.txt`. Arial/Helvetica and system serif faces provide fallbacks. No font is requested from a third-party server at runtime. There are no third-party visual/audio assets or runtime packages. `assets/social.svg` is an editable social-card source; some social networks require a PNG export and absolute URL.
 
 This is a creative portfolio concept, not a medical or productivity service. MIT licensed.

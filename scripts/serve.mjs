@@ -6,8 +6,8 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const root = process.argv.includes('--dist') ? path.join(projectRoot, 'dist') : projectRoot;
 const port = Number(process.env.PORT || 5088);
-const publicFiles = new Set(['index.html', 'styles.css', 'app.js', 'audio.js', 'sculpture.js', 'assets/favicon.svg', 'assets/social.svg']);
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
+const publicFiles = new Set(['index.html', 'styles.css', 'app.js', 'audio.js', 'sculpture.js', 'assets/favicon.svg', 'assets/social.svg', 'assets/ember.svg', 'assets/tidal.svg', 'assets/orbit.svg', 'assets/bodoni-moda-latin.woff2', 'assets/OFL-Bodoni-Moda.txt']);
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.txt': 'text/plain; charset=utf-8' };
 const csp = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'";
 
 const server = http.createServer(async (req, res) => {

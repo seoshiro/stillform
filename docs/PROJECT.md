@@ -6,7 +6,8 @@ STILLFORM is a self-contained, original audiovisual portfolio concept for Beibar
 
 ## Decisions
 
-- Warm off-white, charcoal, and vermilion with sage/lilac soundscape variants. Large grotesk headlines, italic serif editorial accents, and restrained monospace metadata.
+- Near-black surfaces, warm white Bodoni Moda titles, minimal navigation, and a dimensional perspective gallery of three original soundscape covers. The former paper background, newspaper-like grid, and starburst motif have been removed throughout.
+- All covers are local original SVG art. Bodoni Moda is self-hosted with its SIL Open Font License. No paid generation or runtime font service is used.
 - Native HTML/CSS/JavaScript modules, Canvas 2D, Web Audio, and localStorage. No framework or third-party runtime package was necessary.
 - Three scene tunings share a generated noise bed and four softly modulated sine voices. Gesture-only playback and a restrained master gain avoid unexpected loud autoplay.
 - Motion runs only while its canvas is visible and the tab is active, respects reduced-motion preferences, and can be paused independently from sound.

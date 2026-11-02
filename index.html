@@ -3,92 +3,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f2eb">
-  <meta name="description" content="A little space for a different state. Shape an ambient soundscape, set a focus timer, and find your own frequency with STILLFORM.">
-  <meta property="og:title" content="STILLFORM — Find your own frequency.">
-  <meta property="og:description" content="An interactive listening room. Less noise. More room for you.">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="A world you can tune into. Discover three immersive soundscapes, make your own mix, and take a moment with STILLFORM.">
+  <meta property="og:title" content="STILLFORM — A world you can tune into.">
+  <meta property="og:description" content="Three atmospheres. Infinite ways to feel a little more here.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="./assets/social.svg">
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preload" href="./assets/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css">
-  <title>STILLFORM — Find your own frequency.</title>
+  <title>STILLFORM — A world you can tune into.</title>
   <script type="module" src="./app.js"></script>
 </head>
-<body>
+<body data-atmosphere="ember">
   <a class="skip-link" href="#main">Skip to the listening room</a>
   <header class="site-header wrap">
-    <a class="wordmark" href="#" aria-label="Stillform home"><span class="brand-mark" aria-hidden="true">✳</span> stillform<span class="brand-dot">®</span></a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#room">The listening room</a>
-      <a href="#ritual">The ritual</a>
-      <a href="#collection">Your collection <span id="collection-count">00</span></a>
-    </nav>
-    <button class="header-sound" type="button" data-play aria-label="Start sound"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H3v7h4v-7H4Zm16 0h1v7h-4v-7h3Z"/></svg><span data-play-label>Sound off</span><span class="status-dot" aria-hidden="true"></span></button>
+    <a class="wordmark" href="#" aria-label="Stillform home">Stillform</a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="#room">Listening room</a><a href="#ritual">A moment</a><a href="#collection">Your collection <span id="collection-count">00</span></a></nav>
+    <button class="header-sound" type="button" data-play aria-label="Start sound"><span class="sound-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-play-label>Sound off</span></button>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#room">The listening room <span>01</span></a><a href="#ritual">The ritual <span>02</span></a><a href="#collection">Your collection <span>03</span></a></nav>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#room">Listening room</a><a href="#ritual">A moment</a><a href="#collection">Your collection</a></nav>
   </header>
 
   <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="eyebrow hero-eyebrow"><span class="tiny-cross" aria-hidden="true">+</span> A small escape, by design <span class="hero-edition">EST. 2026 · VOL. 001</span></div>
-      <div class="hero-grid">
-        <h1 id="hero-title">Find your own<br><span class="frequency-word">frequency<span class="title-star" aria-hidden="true">✳</span></span><span class="title-period">.</span></h1>
-        <div class="hero-aside"><p>The world can wait.<br>Make a little room for yourself.</p><a class="text-link" href="#room">Enter the listening room <span aria-hidden="true">↙</span></a></div>
-      </div>
-      <div class="hero-bottom"><span>LESS NOISE. MORE YOU.</span><span><span class="tiny-dot" aria-hidden="true"></span> No account. Just a moment.</span></div>
-    </section>
-
-    <section id="room" class="room-section wrap" aria-labelledby="room-title">
-      <div class="listening-room">
-        <div class="visual-room" id="visual-room" data-scene="ember">
-          <canvas id="sculpture" aria-hidden="true"></canvas>
-          <div class="visual-grain" aria-hidden="true"></div>
-          <div class="visual-top"><div><span class="live-dot" aria-hidden="true"></span><span id="visual-label">THE EMBER ROOM</span></div><span>LIVE GENERATIVE FORM</span></div>
-          <div class="visual-coordinate" aria-hidden="true">SF—001<br>40° 44′ N</div>
-          <div class="visual-side" aria-hidden="true">A SPACE BETWEEN THINGS</div>
-          <div class="sculpture-label" aria-hidden="true"><span class="sculpture-line"></span><span id="form-label">FORM 01 / TOROID</span></div>
-          <div class="visual-bottom"><div><span class="eyebrow">YOUR CURRENT STATE</span><h2 id="room-title">A slower kind<br>of energy.</h2></div><button id="motion-toggle" class="motion-button" type="button" aria-pressed="false" aria-label="Pause visual animation"><span id="motion-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Pause motion</span></button></div>
+    <section id="atmospheres" class="hero" aria-labelledby="hero-title">
+      <div class="hero-intro"><p class="eyebrow">SOUND FOR THE WORLDS WITHIN</p><h1 id="hero-title">Stillform</h1><p class="hero-subtitle">A world you can tune into.</p></div>
+      <div class="cover-stage" aria-label="Explore the three soundscapes">
+        <div class="cover-row">
+          <div class="sound-case ghost-case ghost-left case-tidal" aria-hidden="true"><div class="case-face"><span class="case-top">STILLFORM / AMBIENT EDITIONS</span><span class="case-title">Tidal</span><span class="case-bottom">LET THE DAY WASH AWAY.</span></div><span class="case-spine">STILLFORM — TIDAL</span></div>
+          <button class="sound-case case-ember active" type="button" data-cover-scene="ember" aria-pressed="true" aria-label="Select Ember soundscape"><span class="case-face"><span class="case-top">STILLFORM / AMBIENT EDITIONS</span><span class="case-edition">01</span><span class="case-title">Ember</span><span class="case-bottom">A SLOWER KIND OF ENERGY.</span></span><span class="case-spine" aria-hidden="true">STILLFORM — EMBER / 01</span></button>
+          <button class="sound-case case-tidal" type="button" data-cover-scene="tidal" aria-pressed="false" aria-label="Select Tidal soundscape"><span class="case-face"><span class="case-top">STILLFORM / AMBIENT EDITIONS</span><span class="case-edition">02</span><span class="case-title">Tidal</span><span class="case-bottom">LET THE DAY WASH AWAY.</span></span><span class="case-spine" aria-hidden="true">STILLFORM — TIDAL / 02</span></button>
+          <button class="sound-case case-orbit" type="button" data-cover-scene="orbit" aria-pressed="false" aria-label="Select Orbit soundscape"><span class="case-face"><span class="case-top">STILLFORM / AMBIENT EDITIONS</span><span class="case-edition">03</span><span class="case-title">Orbit</span><span class="case-bottom">A LITTLE FURTHER FROM EVERYTHING.</span></span><span class="case-spine" aria-hidden="true">STILLFORM — ORBIT / 03</span></button>
+          <div class="sound-case ghost-case ghost-right case-ember" aria-hidden="true"><div class="case-face"><span class="case-top">STILLFORM / AMBIENT EDITIONS</span><span class="case-title">Ember</span><span class="case-bottom">A SLOWER KIND OF ENERGY.</span></div><span class="case-spine">STILLFORM — EMBER</span></div>
         </div>
-
-        <aside class="mixer" aria-label="Sound mixer">
-          <div class="mixer-heading"><span class="eyebrow">MAKE YOURSELF AT HOME</span><span aria-hidden="true">↗</span></div>
-          <div class="track-info"><span class="track-number" id="track-number">01 / 03</span><h3 id="scene-name">Ember</h3><p id="scene-description">Warm tones. A quiet spark.<br>A place to settle in.</p></div>
-          <div class="playback"><button class="play-button" id="main-play" data-play type="button" aria-label="Start sound"><svg id="play-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></svg></button><div><span class="playback-title" id="playback-title">Press play. Be here.</span><span class="playback-subtitle" id="playback-subtitle">Headphones feel even better</span></div><div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
-          <div class="mixer-divider"></div>
-          <div class="sliders-heading"><span class="eyebrow">SHAPE THE ATMOSPHERE</span><button id="reset-mix" class="quiet-button" type="button">Reset</button></div>
-          <div class="mix-control"><div><label for="texture">Texture <span>soft rain</span></label><output for="texture" id="texture-value">65%</output></div><input id="texture" type="range" min="0" max="100" value="65" aria-label="Texture, soft rain volume"></div>
-          <div class="mix-control"><div><label for="depth">Depth <span>low tide</span></label><output for="depth" id="depth-value">40%</output></div><input id="depth" type="range" min="0" max="100" value="40" aria-label="Depth, low tide volume"></div>
-          <div class="mix-control"><div><label for="drift">Drift <span>ambient tones</span></label><output for="drift" id="drift-value">50%</output></div><input id="drift" type="range" min="0" max="100" value="50" aria-label="Drift, ambient tones volume"></div>
-          <div class="master-volume"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m11 5-6 5H2v4h3l6 5V5Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><label class="sr-only" for="master">Master volume</label><input id="master" type="range" min="0" max="100" value="55"><output id="master-value" for="master">55%</output></div>
-          <button id="save-mix" class="save-button" type="button"><span>Save your mix</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg></button>
-          <p class="local-note">Yours to keep. Saved on this device.</p>
-        </aside>
       </div>
-      <div class="scene-selector" role="group" aria-label="Choose a soundscape">
-        <button class="scene-option active" data-scene-select="ember" aria-pressed="true" type="button"><span class="scene-swatch ember-swatch" aria-hidden="true"></span><span><strong>01 — Ember</strong><small>For coming back to yourself</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button>
-        <button class="scene-option" data-scene-select="tidal" aria-pressed="false" type="button"><span class="scene-swatch tidal-swatch" aria-hidden="true"></span><span><strong>02 — Tidal</strong><small>For finding your flow</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button>
-        <button class="scene-option" data-scene-select="orbit" aria-pressed="false" type="button"><span class="scene-swatch orbit-swatch" aria-hidden="true"></span><span><strong>03 — Orbit</strong><small>For a little perspective</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button>
-      </div>
-      <div class="room-footnote"><span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Zm-4 9 3 3 5-6"/></svg> Made here, in your browser. Nothing to stream.</span><span>SCROLL TO SLOW DOWN <span aria-hidden="true">↓</span></span></div>
+      <div class="hero-controls"><div class="atmosphere-tabs" role="group" aria-label="Choose an atmosphere"><button type="button" data-cover-scene="ember" aria-pressed="true" class="active">Ember <span>Warmth</span></button><button type="button" data-cover-scene="tidal" aria-pressed="false">Tidal <span>Flow</span></button><button type="button" data-cover-scene="orbit" aria-pressed="false">Orbit <span>Space</span></button></div><button class="hero-listen" type="button" data-play aria-label="Start sound"><span class="small-play" aria-hidden="true"></span><span id="hero-play-label">Listen to Ember</span></button></div>
+      <a class="hero-scroll" href="#room">Make it your own <span aria-hidden="true">↓</span></a>
     </section>
 
-    <section id="ritual" class="ritual-section wrap" aria-labelledby="ritual-title">
-      <div class="section-label"><span class="eyebrow">01 / THE RITUAL</span><span class="small-cross" aria-hidden="true">✳</span></div>
-      <div class="ritual-grid"><div class="ritual-copy"><h2 id="ritual-title">Do less.<br><span>Feel more.</span></h2><p>You don’t need another thing to do.<br>Just a moment to stop doing.</p><ol class="ritual-steps"><li><span>01</span> Find a sound that feels like you.</li><li><span>02</span> Give yourself a little time.</li><li><span>03</span> Let everything else wait.</li></ol></div>
-        <div class="focus-card"><div class="focus-top"><span class="eyebrow">A MOMENT, ON PURPOSE</span><span class="focus-dot" aria-hidden="true"></span></div><div class="timer-display" id="timer-display" role="timer" aria-label="Focus time remaining">25<span>:</span>00</div><p id="timer-caption">Your next little reset.</p><div class="timer-options" role="group" aria-label="Focus duration"><button type="button" data-duration="15" aria-pressed="false">15 min</button><button class="active" type="button" data-duration="25" aria-pressed="true">25 min</button><button type="button" data-duration="45" aria-pressed="false">45 min</button></div><div class="timer-progress" role="progressbar" aria-label="Focus session progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span id="timer-progress-fill"></span></div><div class="timer-actions"><button id="timer-toggle" class="dark-button" type="button">Start a moment <span aria-hidden="true">↗</span></button><button id="timer-reset" class="timer-reset" type="button" aria-label="Reset focus timer" title="Reset focus timer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></button></div><span class="timer-note">No pressure. No streaks. Just this.</span></div>
+    <section id="room" class="room-section wrap" aria-labelledby="studio-title">
+      <div class="section-heading"><div><p class="eyebrow">THE LISTENING ROOM</p><h2 id="studio-title">Somewhere<br><em>closer to you.</em></h2></div><p>Choose an atmosphere. Shape the sound.<br>Let the rest of the world fall away.</p></div>
+      <div class="listening-room">
+        <div class="visual-room" id="visual-room" data-scene="ember"><canvas id="sculpture" aria-hidden="true"></canvas><div class="visual-top"><span class="live-dot" aria-hidden="true"></span><span id="visual-label">THE EMBER ROOM</span><span class="visual-note">A space to simply be.</span></div><span id="form-label" class="sr-only">FORM 01 / TOROID</span><div class="visual-bottom"><h2 id="room-title">A slower kind<br>of energy.</h2><button id="motion-toggle" class="motion-button" type="button" aria-pressed="false" aria-label="Pause visual animation"><span id="motion-symbol" aria-hidden="true">Ⅱ</span><span id="motion-label">Pause motion</span></button></div></div>
+        <aside class="mixer" aria-label="Sound mixer"><div class="mixer-heading"><span class="eyebrow">YOUR ATMOSPHERE</span><span class="track-number" id="track-number">01 / 03</span></div><div class="track-info"><h3 id="scene-name">Ember</h3><p id="scene-description">Warm tones. A quiet spark.<br>A place to settle in.</p></div><div class="playback"><button class="play-button" id="main-play" data-play type="button" aria-label="Start sound"><svg id="play-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></svg></button><div><span class="playback-title" id="playback-title">Press play. Be here.</span><span class="playback-subtitle" id="playback-subtitle">Headphones feel even better</span></div><div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div><div class="mixer-divider"></div><div class="sliders-heading"><span class="eyebrow">FIND YOUR BALANCE</span><button id="reset-mix" class="quiet-button" type="button">Reset</button></div><div class="mix-control"><div><label for="texture">Texture <span>soft rain</span></label><output for="texture" id="texture-value">65%</output></div><input id="texture" type="range" min="0" max="100" value="65" aria-label="Texture, soft rain volume"></div><div class="mix-control"><div><label for="depth">Depth <span>low tide</span></label><output for="depth" id="depth-value">40%</output></div><input id="depth" type="range" min="0" max="100" value="40" aria-label="Depth, low tide volume"></div><div class="mix-control"><div><label for="drift">Drift <span>ambient tones</span></label><output for="drift" id="drift-value">50%</output></div><input id="drift" type="range" min="0" max="100" value="50" aria-label="Drift, ambient tones volume"></div><div class="master-volume"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m11 5-6 5H2v4h3l6 5V5Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><label class="sr-only" for="master">Master volume</label><input id="master" type="range" min="0" max="100" value="55"><output id="master-value" for="master">55%</output></div><button id="save-mix" class="save-button" type="button"><span>Keep this feeling</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg></button><p class="local-note">Saved on this device. Always yours.</p></aside>
       </div>
+      <div class="scene-selector" role="group" aria-label="Choose a soundscape"><button class="scene-option active" data-scene-select="ember" aria-pressed="true" type="button"><span class="scene-swatch ember-swatch" aria-hidden="true"></span><span><strong>Ember</strong><small>For coming back to yourself</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button><button class="scene-option" data-scene-select="tidal" aria-pressed="false" type="button"><span class="scene-swatch tidal-swatch" aria-hidden="true"></span><span><strong>Tidal</strong><small>For finding your flow</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button><button class="scene-option" data-scene-select="orbit" aria-pressed="false" type="button"><span class="scene-swatch orbit-swatch" aria-hidden="true"></span><span><strong>Orbit</strong><small>For a little perspective</small></span><span class="scene-arrow" aria-hidden="true">↗</span></button></div>
+      <p class="room-footnote">No streaming. No accounts. Just a little space for you.</p>
     </section>
 
-    <section id="collection" class="collection-section wrap" aria-labelledby="collection-title"><div class="section-label"><span class="eyebrow">02 / YOUR COLLECTION</span><span class="collection-privacy">PRIVATE BY NATURE <span aria-hidden="true">↙</span></span></div><div class="collection-heading"><h2 id="collection-title">Good states.<br>Worth keeping.</h2><p>A few places you can always come back to.<br>Your saved mixes live right here, on this device.</p></div><div id="saved-mixes" class="saved-mixes"></div><div id="collection-empty" class="collection-empty"><div class="empty-art" aria-hidden="true"><span></span><span></span><span></span></div><div><h3>Your first good state starts here.</h3><p>Find a mix you love, then save it in the listening room.</p></div><a class="circle-link" href="#room" aria-label="Go to listening room to create a mix">↗</a></div></section>
+    <section id="ritual" class="ritual-section wrap" aria-labelledby="ritual-title"><div class="ritual-copy"><p class="eyebrow">A MOMENT, ON PURPOSE</p><h2 id="ritual-title">Let the world<br><em>wait a little.</em></h2><p>There is nothing to achieve here.<br>Find your sound, give yourself a moment,<br>and come back at your own pace.</p><span class="ritual-whisper">No pressure. No streaks. Just this.</span></div><div class="focus-card"><div class="focus-top"><span class="eyebrow">YOUR TIME, GIVEN BACK</span><span class="focus-dot" aria-hidden="true"></span></div><div class="timer-display" id="timer-display" role="timer" aria-label="Focus time remaining">25<span>:</span>00</div><p id="timer-caption">Your next little reset.</p><div class="timer-options" role="group" aria-label="Focus duration"><button type="button" data-duration="15" aria-pressed="false">15 min</button><button class="active" type="button" data-duration="25" aria-pressed="true">25 min</button><button type="button" data-duration="45" aria-pressed="false">45 min</button></div><div class="timer-progress" role="progressbar" aria-label="Focus session progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span id="timer-progress-fill"></span></div><div class="timer-actions"><button id="timer-toggle" class="dark-button" type="button">Start a moment <span aria-hidden="true">↗</span></button><button id="timer-reset" class="timer-reset" type="button" aria-label="Reset focus timer" title="Reset focus timer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></button></div><span class="timer-note">The sound stays. Leave whenever you’re ready.</span></div></section>
 
-    <section class="manifesto wrap" aria-label="Our philosophy"><span class="eyebrow">A NOTE FROM STILLFORM</span><p>Not every moment<br>needs to <span>be something.</span></p><div class="manifesto-bottom"><span class="manifesto-star" aria-hidden="true">✳</span><span>Sometimes, being here is enough.</span><a href="#room" class="text-link">Stay for a while <span aria-hidden="true">↗</span></a></div></section>
+    <section id="collection" class="collection-section wrap" aria-labelledby="collection-title"><div class="section-heading"><div><p class="eyebrow">YOUR PRIVATE COLLECTION</p><h2 id="collection-title">A feeling worth<br><em>coming back to.</em></h2></div><p>Your favourite versions of quiet.<br>Saved here, on this device.</p></div><div id="saved-mixes" class="saved-mixes"></div><div id="collection-empty" class="collection-empty"><div class="empty-art" aria-hidden="true"><span></span><span></span><span></span></div><div><h3>Your collection begins with a feeling.</h3><p>Make a mix in the listening room, then keep it here.</p></div><a class="circle-link" href="#room" aria-label="Go to listening room to create a mix">↗</a></div></section>
+
+    <section class="closing wrap" aria-label="Our philosophy"><p class="eyebrow">LESS NOISE. MORE ROOM TO BE.</p><p>Not every moment<br>needs to be <em>something.</em></p><a href="#room" class="text-link">Stay for a while <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="site-footer wrap"><a class="wordmark" href="#" aria-label="Stillform home"><span class="brand-mark" aria-hidden="true">✳</span> stillform<span class="brand-dot">®</span></a><p>An independent digital experience by <strong>Beibars</strong>.</p><div><span>© 2026 STILLFORM</span><button id="about-button" class="quiet-button" type="button">About this space ↗</button></div></footer>
-
+  <footer class="site-footer wrap"><a class="wordmark" href="#" aria-label="Stillform home">Stillform</a><p>An independent experience by <strong>Beibars</strong>.</p><div><span>© 2026</span><button id="about-button" class="quiet-button" type="button">About this space ↗</button></div></footer>
   <dialog id="save-dialog" aria-labelledby="save-title"><form id="save-form"><div class="dialog-top"><span class="eyebrow">KEEP THIS FEELING</span><button class="dialog-close" data-close-dialog type="button" aria-label="Close save dialog">×</button></div><h2 id="save-title">Name your<br>good state.</h2><label for="mix-name">A name to come back to</label><input id="mix-name" name="mix-name" type="text" maxlength="40" placeholder="Sunday, somewhere" autocomplete="off" required><p id="save-error" class="form-error" role="alert"></p><button class="dark-button" type="submit">Save to your collection <span aria-hidden="true">↗</span></button><p class="dialog-note">Stored only in this browser. Clearing site data removes saved mixes.</p></form></dialog>
   <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-top"><span class="eyebrow">INDEPENDENT BY DESIGN</span><button class="dialog-close" data-close-dialog type="button" aria-label="Close about dialog">×</button></div><h2 id="about-title">A little room.<br>All yours.</h2><p>STILLFORM is an original portfolio project by Beibars. An experiment in sound, form, and taking a moment.</p><p>The sculpture is drawn live. The sound is synthesized in your browser. There are no accounts, trackers, paid tools, or audio downloads.</p><p>Your saved mixes stay on your device. This is a creative listening tool, with no health or productivity promises.</p><button class="dark-button" data-close-dialog type="button">Back to the room <span aria-hidden="true">↗</span></button></dialog>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
-  <noscript><div class="noscript-note">Enable JavaScript to hear the soundscapes, shape the sculpture, and use the timer. The rest of this space is still yours to explore.</div></noscript>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div><div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript-note">Enable JavaScript to hear the soundscapes, shape the sculpture, and use the timer.</div></noscript>
 </body>
 </html>

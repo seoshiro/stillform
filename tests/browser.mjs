@@ -26,7 +26,12 @@ const browser = await puppeteer.launch({ executablePath: process.env.BROWSER_PAT
 const report = { date: new Date().toISOString(), browser: await browser.version(), productionBuild: process.env.TEST_PRODUCTION === '1', checks: [], accessibility: [], consoleErrors: [], screenshots: [] };
 function pass(name, evidence) { report.checks.push({ name, status: 'PASS', evidence }); console.log('PASS ' + name + (evidence ? ' — ' + evidence : '')); }
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const click = async (page, selector) => { await page.waitForSelector(selector, { visible: true }); await page.click(selector); };
+const click = async (page, selector) => {
+  await page.waitForSelector(selector, { visible: true });
+  await page.$eval(selector, (element) => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await sleep(80);
+  await page.click(selector);
+};
 const text = (page, selector) => page.$eval(selector, (element) => element.textContent.trim());
 async function setRange(page, selector, value) { await page.$eval(selector, (element, next) => { element.value = next; element.dispatchEvent(new Event('input', { bubbles: true })); }, value); }
 async function screenshot(page, name, fullPage = false) { const file = path.join(output, name + '.png'); await page.screenshot({ path: file, fullPage }); report.screenshots.push(file); }
@@ -77,6 +82,20 @@ try {
   assert.equal(await page.$eval('#main-play', (element) => element.getAttribute('aria-pressed')), 'false');
   assert.equal(requests.filter((request) => !request.startsWith(url) && !request.startsWith('data:')).length, 0);
   pass('Initial load and privacy', 'No autoplay, external requests, or runtime dependencies');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.body).backgroundColor), 'rgb(9, 9, 11)');
+  assert.equal(await page.evaluate(() => document.fonts.check('100px "Bodoni Moda"')), true);
+  assert.equal(await page.$$eval('.brand-mark, .title-star, .manifesto-star', (elements) => elements.length), 0);
+  assert.equal(await page.evaluate(() => document.body.textContent.includes('✳')), false);
+  await click(page, '.sound-case[data-cover-scene="tidal"]');
+  assert.equal(await text(page, '#scene-name'), 'Tidal');
+  assert.equal(await page.$eval('.scene-option[data-scene-select="tidal"]', (button) => button.getAttribute('aria-pressed')), 'true');
+  await click(page, '.atmosphere-tabs [data-cover-scene="orbit"]');
+  assert.equal(await text(page, '#scene-name'), 'Orbit');
+  assert.equal(await text(page, '#hero-play-label'), 'Listen to Orbit');
+  await click(page, '.atmosphere-tabs [data-cover-scene="ember"]');
+  await page.evaluate(() => scrollTo(0, 0));
+  await sleep(250);
+  pass('Dark gallery and cover selection', 'Local serif font loaded; star motif removed; 3D cover and category pills synchronize the mixer');
   await screenshot(page, 'desktop', true);
   await screenshot(page, 'desktop-viewport');
 

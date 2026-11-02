@@ -57,6 +57,8 @@ function selectScene(scene, useDefaults = true, feedback = true) {
   state.scene = scene;
   if (useDefaults) state.mix = { ...scenes[scene].mix };
   const info = scenes[scene];
+  document.body.dataset.atmosphere = scene;
+  $('.cover-stage').dataset.current = scene;
   $('#visual-room').dataset.scene = scene;
   $('#visual-label').textContent = 'THE ' + info.name.toUpperCase() + ' ROOM';
   $('#scene-name').textContent = info.name;
@@ -66,6 +68,11 @@ function selectScene(scene, useDefaults = true, feedback = true) {
   setLines($('#scene-description'), info.description);
   $$('[data-scene-select]').forEach((button) => {
     const active = button.dataset.sceneSelect === scene;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  $$('[data-cover-scene]').forEach((button) => {
+    const active = button.dataset.coverScene === scene;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
@@ -90,6 +97,7 @@ function syncPlayback() {
   $('#play-icon').append(path);
   $('#playback-title').textContent = state.playing ? 'You’re right where you are.' : 'Press play. Be here.';
   $('#playback-subtitle').textContent = state.playing ? scenes[state.scene].name + ' · an endless soundscape' : 'Headphones feel even better';
+  $('#hero-play-label').textContent = state.playing ? 'Pause your atmosphere' : 'Listen to ' + scenes[state.scene].name;
 }
 async function setPlaying(playing) {
   if (state.busy) return;
@@ -113,6 +121,7 @@ async function setPlaying(playing) {
 }
 $$('[data-play]').forEach((button) => button.addEventListener('click', () => setPlaying(!state.playing)));
 $$('[data-scene-select]').forEach((button) => button.addEventListener('click', () => { selectScene(button.dataset.sceneSelect); syncPlayback(); }));
+$$('[data-cover-scene]').forEach((button) => button.addEventListener('click', () => { selectScene(button.dataset.coverScene); syncPlayback(); }));
 ['texture', 'depth', 'drift', 'master'].forEach((key) => {
   $('#' + key).addEventListener('input', (event) => {
     const value = clamp(Number(event.target.value));

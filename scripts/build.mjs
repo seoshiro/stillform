@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'dist');
-const files = ['index.html', 'styles.css', 'app.js', 'audio.js', 'sculpture.js', 'assets/favicon.svg', 'assets/social.svg'];
+const files = ['index.html', 'styles.css', 'app.js', 'audio.js', 'sculpture.js', 'assets/favicon.svg', 'assets/social.svg', 'assets/ember.svg', 'assets/tidal.svg', 'assets/orbit.svg', 'assets/bodoni-moda-latin.woff2', 'assets/OFL-Bodoni-Moda.txt'];
 await mkdir(path.join(output, 'assets'), { recursive: true });
 let bytes = 0;
 for (const file of files) {
